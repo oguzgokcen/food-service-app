@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">Food Couriers</string>
+    <string name="food_couriers">Food Couriers</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="create_account">Create Account</string>
+    <string name="login">Login</string>
+    <string name="hello_blank_fragment">hello_blank_fragment</string>
+    <string name="thank_you_norder_completed">Thank You!\nOrder Completed</string>
+    <string name="please_rate_your_last_driver">Please rate your last Driver</string>
+    <string name="leave_feedback">Leave Feedback</string>
+    <string name="submit">Submit</string>
+    <string name="profile">Profile</string>
+    <string name="personal_info">Personal Info</string>
+    <string name="your_name">Your Name</string>
+    <string name="occupation">Occupation</string>
+    <string name="manager">Manager</string>
+    <string name="employer">Employer</string>
+    <string name="nigeria">Nigeria</string>
+    <string name="contact_info">Contact Info</string>
+    <string name="phone_number">Phone number</string>
+    <string name="email">Email</string>
+    <string name="edit">Edit</string>
+    <string name="search_edt">Search</string>
+    <string name="meal_menu">Meal Menu</string>
+    <string name="order_details">Order Details</string>
+    <string name="food">food</string>
+    <string name="place_my_order">Place My Order</string>
+    <string name="sub_total">Sub -Total</string>
+    <string name="delivery_charge">Delivery Charge</string>
+    <string name="discount">Discount</string>
+    <string name="total">Total</string>
+    <string name="price">$%1$.2f</string>
+    <string name="_100">$100</string>
+    <string name="_10">$10</string>
+    <string name="back_button">back button</string>
+    <string name="chat_button">chatButton</string>
+
+
+    <string name="full_name">Full Name</string>
+    <string name="email_address">Email address</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_up_with_google">Sign up with Google</string>
+    <string name="password">Password</string>
+    <string name="forget_password">Forget Password?</string>
+    <string name="login_with_google">Login with Google</string>
+    <string name="where_is_your_location">Where is your location</string>
+    <string name="your_location">Your Location</string>
+    <string name="set_location">Set Location</string>
+    <string name="chat">Chat</string>
+    <string name="binding_null">Binding null</string>
+
+    <string name="please_enter_your_name">Please enter your name</string>
+    <string name="please_enter_a_valid_email_address">Please enter a valid email address</string>
+    <string name="your_password_must_contain_at_least_one_uppercase_letter_and_a_special_character">Your password must contain at least one uppercase letter and a special character</string>
+
+
+</resources>

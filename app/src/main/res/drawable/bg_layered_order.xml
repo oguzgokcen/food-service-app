@@ -1,0 +1,16 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <gradient
+                android:endColor="#fb0208"
+                android:startColor="#d9124f" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+    <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/card_pattern"
+            android:tileMode="disabled" />
+    </item>
+</layer-list>
