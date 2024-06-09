@@ -26,7 +26,7 @@ class SplashActivity : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.Main).launch {
             delay(SPLASH_TIME)
-
+            dataStoreManager.deleteUserId()
             getUserId()
         }
     }
@@ -34,7 +34,7 @@ class SplashActivity : AppCompatActivity() {
     private fun saveUserId(userId:String) {
         lifecycleScope.launch {
             try {
-                dataStoreManager.saveUserId(userId)
+                //dataStoreManager.saveUserId(userId)
             } catch (e: Exception) {
                 // error
             }
@@ -43,8 +43,8 @@ class SplashActivity : AppCompatActivity() {
 
     private fun getUserId() {
         lifecycleScope.launch {
-            dataStoreManager.userId.collect { userId ->
-                userId?.let {
+            dataStoreManager.token.collect { token ->
+                token?.let {
                     startActivity(MainActivity.callIntent(this@SplashActivity))
                 } ?: run {
                     startActivity(OnboardingActivity.callIntent(this@SplashActivity))

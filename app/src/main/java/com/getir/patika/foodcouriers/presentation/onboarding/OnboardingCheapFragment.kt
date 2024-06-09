@@ -5,20 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.getir.patika.foodcouriers.R
+import com.getir.patika.foodcouriers.databinding.FragmentOnboardingCheapBinding
+import com.getir.patika.foodcouriers.databinding.FragmentOnboardingFavoritiesBinding
+import com.wada811.viewbindingktx.viewBinding
 
+class OnboardingCheapFragment : Fragment(R.layout.fragment_onboarding_cheap) {
 
-class OnboardingCheapFragment : Fragment() {
-
-
-
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_onboarding_cheap, container, false)
+    private val binding by viewBinding(FragmentOnboardingCheapBinding::bind)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.btNext.setOnClickListener {
+            if(isAdded) {
+                findNavController().navigate(R.id.action_onboardingCheapFragment_to_accountFragment)
+            }
+        }
     }
 
     companion object {

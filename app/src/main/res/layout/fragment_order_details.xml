@@ -99,25 +99,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="12dp">
-
-            <TextView
-                style="@style/OrderDetailsText"
-                android:text="@string/discount" />
-
-            <TextView
-                android:id="@+id/tv_discount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                android:text="@string/_10"
-                tools:text="10$" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_marginHorizontal="12dp"
             android:layout_marginVertical="12dp">
 
@@ -155,6 +136,12 @@
             app:backgroundTint="@null" />
 
     </LinearLayout>
+
+    <com.getir.patika.foodcouriers.presentation.custom.CustomLoadingView
+        android:id="@+id/loadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

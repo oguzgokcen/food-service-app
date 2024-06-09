@@ -7,7 +7,7 @@
     <com.google.android.material.chip.Chip
         android:id="@+id/chip"
         style="@style/ChipCustomStyle"
-        android:layout_width="126dp"
+        android:layout_width="wrap_content"
         android:layout_height="43dp"
         android:layout_marginEnd="12dp"
         android:checkable="true"
@@ -18,6 +18,7 @@
         android:textAlignment="center"
         android:textSize="18sp"
         app:chipIcon="@drawable/hamburger"
+        app:chipIconEnabled="true"
         app:chipStrokeColor="@color/chip_selected_color"
         app:chipStrokeWidth="1dp"
         app:chipMinTouchTargetSize="0dp"

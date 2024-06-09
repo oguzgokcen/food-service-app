@@ -4,6 +4,7 @@ import com.getir.patika.foodcouriers.data.remote.ApiService
 import com.getir.patika.foodcouriers.data.remote.CallBack
 import com.getir.patika.foodcouriers.di.IoDispatcher
 import com.getir.patika.foodcouriers.domain.model.BaseResponse
+import com.getir.patika.foodcouriers.domain.model.CreateAccountResponse
 import com.getir.patika.foodcouriers.domain.model.Location
 import com.getir.patika.foodcouriers.domain.model.Login
 import com.getir.patika.foodcouriers.domain.model.Profile
@@ -23,7 +24,7 @@ class UserRepository @Inject constructor(
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) {
 
-    fun setRegister(register: Register): Flow<BaseResponse<String>> = callbackFlow {
+    fun setRegister(register: Register): Flow<BaseResponse<CreateAccountResponse>> = callbackFlow {
         apiService.setRegister(register).enqueue(CallBack(this.channel))
         awaitClose { close() }
     }.flowOn(ioDispatcher)

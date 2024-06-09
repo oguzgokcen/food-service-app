@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.getir.patika.foodcouriers.common.domain.ViewState
 import com.getir.patika.foodcouriers.domain.model.BaseResponse
-import com.getir.patika.foodcouriers.domain.model.Food
+import com.getir.patika.foodcouriers.domain.model.Food.Food
 import com.getir.patika.foodcouriers.domain.usecase.food.SearchFoodsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

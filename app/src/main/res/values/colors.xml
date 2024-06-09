@@ -10,7 +10,8 @@
     <color name="chip_selected_color">#D61355</color>
     <color name="chip_unselected_text_color">#0D0D0D</color>
     <color name="chip_stroke_color">#FF0000</color>
-
+    <color name="bottom_nav_selected">#D61355</color>
+    <color name="bottom_nav_unselected">#FF0000</color>
 
     <color name="md_theme_light_primaryContainer">#EADDFF</color>
     <color name="md_theme_light_onPrimaryContainer">#21005D</color>
@@ -28,7 +29,7 @@
     <color name="md_theme_light_onError">#FFFFFF</color>
     <color name="md_theme_light_errorContainer">#F9DEDC</color>
     <color name="md_theme_light_onErrorContainer">#410E0B</color>
-    <color name="md_theme_light_background">#ffffff</color>
+    <color name="md_theme_light_background">#F2F0FA</color>
     <color name="md_theme_light_onBackground">#1C1B1F</color>
     <color name="md_theme_light_primary">#6750A4</color>
     <color name="md_theme_light_onPrimary">#FFFFFF</color>

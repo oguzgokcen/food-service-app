@@ -2,10 +2,12 @@ package com.getir.patika.foodcouriers.presentation.orderdetails
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.getir.patika.chatapp.data.model.OrderItem
 import com.getir.patika.foodcouriers.R
 import com.getir.patika.foodcouriers.databinding.ItemFoodOrderBinding
@@ -40,16 +42,16 @@ class OrderDetailsAdapter(private val events: (OrderDetailsEvent) -> Unit) : Lis
         RecyclerView.ViewHolder(binding.root) {
         fun bind(orderItem: OrderItem) {
             binding.apply {
-                tvFoodPrice.text = binding.root.context.getString(R.string.price, orderItem.price)
+                tvFoodPrice.text = binding.root.context.getString(R.string.price, orderItem.price.toDouble())
                 tvCount.text = orderItem.quantity.toString()
                 tvFoodTitle.text = orderItem.name
-                tvFoodSubHeader.text = orderItem.place
-
+                Glide.with(binding.root.context).load(orderItem.imageUrl).into(ivFood)
+//                tvFoodSubHeader.text = orderItem.place
                 btnPlus.setOnClickListener {
-                    events(OrderDetailsEvent.OnPlusClick(orderItem.id))
+                    events(OrderDetailsEvent.OnPlusClick(orderItem))
                 }
                 btnMinus.setOnClickListener {
-                    events(OrderDetailsEvent.OnMinusClick(orderItem.id))
+                    events(OrderDetailsEvent.OnMinusClick(orderItem))
                 }
             }
         }
@@ -62,7 +64,7 @@ class OrderDetailsAdapter(private val events: (OrderDetailsEvent) -> Unit) : Lis
             }
 
             override fun areContentsTheSame(oldItem: OrderItem, newItem: OrderItem): Boolean {
-                return oldItem == newItem
+                return oldItem.equals(newItem)
             }
         }
     }

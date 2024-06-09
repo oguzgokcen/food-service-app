@@ -16,7 +16,7 @@ class SingleRecylerAdapter<B: ViewBinding,DATA>(
             field = value
             notifyDataSetChanged()
         }
-
+    var secondaryData = data.toList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingViewHolder<B> {
         val layoutInflater = LayoutInflater.from(parent.context)

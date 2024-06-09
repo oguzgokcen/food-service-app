@@ -7,10 +7,10 @@ import com.getir.patika.foodcouriers.domain.usecase.food.CategoriesFoodsUseCase
 import com.getir.patika.foodcouriers.domain.usecase.food.FoodsUseCase
 import com.getir.patika.foodcouriers.domain.usecase.food.SearchFoodsUseCase
 import com.getir.patika.foodcouriers.domain.usecase.order.ActiveOrdersUseCase
-import com.getir.patika.foodcouriers.domain.usecase.order.DeleteOrdersByIdUseCase
 import com.getir.patika.foodcouriers.domain.usecase.order.DeleteOrdersUseCase
-import com.getir.patika.foodcouriers.domain.usecase.order.OrdersCompleteUseCase
-import com.getir.patika.foodcouriers.domain.usecase.order.OrdersUseCase
+import com.getir.patika.foodcouriers.domain.usecase.order.MakePaymentUseCase
+import com.getir.patika.foodcouriers.domain.usecase.order.ReviewUseCase
+import com.getir.patika.foodcouriers.domain.usecase.order.OrderUseCase
 import com.getir.patika.foodcouriers.domain.usecase.order.UpdateOrdersUseCase
 import com.getir.patika.foodcouriers.domain.usecase.user.LocationUseCase
 import com.getir.patika.foodcouriers.domain.usecase.user.LoginUseCase
@@ -48,10 +48,6 @@ class UseCaseModule {
     fun provideActiveOrdersUseCase(orderRepository: OrderRepository) =
         ActiveOrdersUseCase(orderRepository)
 
-    @Provides
-    @Singleton
-    fun provideDeleteOrdersByIdUseCase(orderRepository: OrderRepository) =
-        DeleteOrdersByIdUseCase(orderRepository)
 
     @Provides
     @Singleton
@@ -61,12 +57,12 @@ class UseCaseModule {
     @Provides
     @Singleton
     fun provideOrdersCompleteUseCase(orderRepository: OrderRepository) =
-        OrdersCompleteUseCase(orderRepository)
+        ReviewUseCase(orderRepository)
 
     @Provides
     @Singleton
     fun provideOrdersUseCase(orderRepository: OrderRepository) =
-        OrdersUseCase(orderRepository)
+        OrderUseCase(orderRepository)
 
     @Provides
     @Singleton
@@ -95,5 +91,8 @@ class UseCaseModule {
     fun provideRegisterUseCase(userRepository: UserRepository) =
         RegisterUseCase(userRepository)
 
-
+    @Provides
+    @Singleton
+    fun provideMakePaymentUseCase(orderRepository: OrderRepository) =
+        MakePaymentUseCase(orderRepository)
 }

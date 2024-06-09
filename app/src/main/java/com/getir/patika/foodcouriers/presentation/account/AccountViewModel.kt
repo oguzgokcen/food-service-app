@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.getir.patika.foodcouriers.common.domain.ViewState
 import com.getir.patika.foodcouriers.domain.model.BaseResponse
+import com.getir.patika.foodcouriers.domain.model.CreateAccountResponse
 import com.getir.patika.foodcouriers.domain.model.Login
 import com.getir.patika.foodcouriers.domain.model.Register
 import com.getir.patika.foodcouriers.domain.usecase.user.LoginUseCase
@@ -27,6 +28,10 @@ class AccountViewModel @Inject constructor(
     private val _uiStateLogin: MutableStateFlow<ViewState<BaseResponse<String>>> =
         MutableStateFlow(ViewState.Loading)
     val uiStateLogin = _uiStateLogin.asStateFlow()
+    private val _uiStateRegister: MutableStateFlow<ViewState<BaseResponse<CreateAccountResponse>>> =
+        MutableStateFlow(ViewState.Loading)
+    val uiStateRegister = _uiStateRegister.asStateFlow()
+
 
     fun setLogin(login: Login) {
         loginUseCase.execute(login).map {
@@ -48,7 +53,7 @@ class AccountViewModel @Inject constructor(
 
     fun setRegister(register: Register) {
         registerUseCase.execute(register).map {
-            when (val responseData: BaseResponse<String> = it) {
+            when (val responseData: BaseResponse<CreateAccountResponse> = it) {
                 is BaseResponse.Success -> {
                     ViewState.Success(responseData)
                 }
@@ -57,9 +62,9 @@ class AccountViewModel @Inject constructor(
                 }
             }
         }.onEach { data ->
-            _uiStateLogin.emit(data)
+            _uiStateRegister.emit(data)
         }.catch {
-            _uiStateLogin.emit(ViewState.Error(it.message.toString()))
+            _uiStateRegister.emit(ViewState.Error(it.message.toString()))
         }.launchIn(viewModelScope)
     }
 

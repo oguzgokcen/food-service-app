@@ -1,5 +1,6 @@
 package com.getir.patika.foodcouriers.di
 
+import com.getir.patika.foodcouriers.data.local.DataStoreManager
 import com.getir.patika.foodcouriers.data.remote.ApiService
 import com.getir.patika.foodcouriers.domain.repository.FoodRepository
 import com.getir.patika.foodcouriers.domain.repository.OrderRepository
@@ -23,15 +24,17 @@ class RepositoryModule {
     @Provides
     fun provideFoodRepository(
         apiService: ApiService,
-        @IoDispatcher ioDispatcher: CoroutineDispatcher
-    ) = FoodRepository(apiService,ioDispatcher)
+        @IoDispatcher ioDispatcher: CoroutineDispatcher,
+        dataStoreManager: DataStoreManager
+    ) = FoodRepository(apiService,ioDispatcher,dataStoreManager)
 
 
     @Provides
     fun provideOrderRepository(
         apiService: ApiService,
-        @IoDispatcher ioDispatcher: CoroutineDispatcher
-    ) = OrderRepository(apiService,ioDispatcher)
+        @IoDispatcher ioDispatcher: CoroutineDispatcher,
+        dataStoreManager: DataStoreManager
+    ) = OrderRepository(apiService,ioDispatcher,dataStoreManager)
 
 
 

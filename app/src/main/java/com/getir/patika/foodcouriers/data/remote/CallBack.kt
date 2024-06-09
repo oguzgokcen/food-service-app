@@ -15,7 +15,7 @@ class CallBack<T>(private val responseChannel: SendChannel<BaseResponse<T>>): Ca
             if(body != null) {
                 responseChannel.trySend(BaseResponse.Success(body))
             }else {
-                responseChannel.trySend(BaseResponse.Error(message = "Body is null"))
+                responseChannel.trySend(BaseResponse.Success(dummyObject()))
             }
         } else {
             val errorBody = response.errorBody().toString()
@@ -27,5 +27,8 @@ class CallBack<T>(private val responseChannel: SendChannel<BaseResponse<T>>): Ca
        responseChannel.trySend(BaseResponse.Error(message = t.localizedMessage))
     }
 
+    private fun dummyObject():T{
+        return "" as T
+    }
 
 }

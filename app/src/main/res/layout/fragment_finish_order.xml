@@ -109,7 +109,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/etSearch"
+                android:id="@+id/etReview"
                 android:layout_width="match_parent"
                 android:layout_height="31dp"
                 android:layout_marginStart="10dp"
@@ -176,7 +176,7 @@
 
 
     <com.getir.patika.foodcouriers.presentation.custom.CustomLoadingView
-        android:id="@+id/progress"
+        android:id="@+id/loadingView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone" />

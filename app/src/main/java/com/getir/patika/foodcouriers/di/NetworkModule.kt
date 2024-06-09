@@ -53,7 +53,7 @@ object NetworkModule {
     fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl("https://espresso-food-delivery-cc3e106e2d34.herokuapp.com") //
+            .baseUrl("http://10.0.2.2:8222/") //
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
     }

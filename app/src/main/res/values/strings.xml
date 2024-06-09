@@ -50,6 +50,33 @@
     <string name="chat">Chat</string>
     <string name="binding_null">Binding null</string>
 
+    <string-array name="months_array">
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+    <string-array name="years_array">
+        <item>2024</item>
+        <item>2025</item>
+        <item>2026</item>
+        <item>2027</item>
+        <item>2028</item>
+        <item>2029</item>
+        <item>2030</item>
+        <item>2031</item>
+        <item>2032</item>
+    </string-array>
+
+
     <string name="please_enter_your_name">Please enter your name</string>
     <string name="please_enter_a_valid_email_address">Please enter a valid email address</string>
     <string name="your_password_must_contain_at_least_one_uppercase_letter_and_a_special_character">Your password must contain at least one uppercase letter and a special character</string>

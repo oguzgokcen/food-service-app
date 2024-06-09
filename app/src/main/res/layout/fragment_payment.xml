@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.payment.PaymentFragment">
+    <LinearLayout
+        android:id="@+id/ll_payment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/_20sdp">
+
+        <TextView
+            android:id="@+id/tvCardNo"
+            style="@style/AccountTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Card Number" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvInputCardNo"
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCardNo"
+                style="@style/TextInputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Card Number"
+                android:inputType="number"
+                android:maxLength="16" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvCardExpMonth"
+            style="@style/AccountTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Expiration Month" />
+
+        <Spinner
+            android:id="@+id/spinnerCardExpMonth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:entries="@array/months_array" />
+
+        <TextView
+            android:id="@+id/tvCardExpYear"
+            style="@style/AccountTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Expiration Year" />
+
+        <Spinner
+            android:id="@+id/spinnerCardExpYear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:entries="@array/years_array" />
+
+        <TextView
+            android:id="@+id/tvCvv"
+            style="@style/AccountTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="CVV" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvInputCvv"
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCvv"
+                style="@style/TextInputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="CVV"
+                android:inputType="number"
+                android:maxLength="3" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_complete_payment"
+        android:layout_width="350dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="100dp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:backgroundTint="#D61355"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Ödemeyi Tamamla"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:layout_below="@id/ll_payment" />
+    <com.getir.patika.foodcouriers.presentation.custom.CustomLoadingView
+        android:id="@+id/loadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+</RelativeLayout>

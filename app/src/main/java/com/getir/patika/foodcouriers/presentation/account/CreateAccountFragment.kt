@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
@@ -52,7 +53,7 @@ class CreateAccountFragment : Fragment() {
     private fun validatePassword(password: String): Boolean {
         // En az bir büyük harf ve bir özel karakter içeriyor mu kontrol et
         val regex = "(?=.*[A-Z])(?=.*[\\W_]).+"
-        return password.matches(regex.toRegex())
+        return password.matches(regex.toRegex())&&password.length>7
     }
 
 
@@ -85,8 +86,8 @@ class CreateAccountFragment : Fragment() {
                     binding.tvInputPassword.error = null
                 }
                 val register = Register(
-                    etName.text.toString(),
                     etEmail.text.toString(),
+                    etName.text.toString(),
                     etPassword.text.toString()
                 )
                 viewModel.setRegister(register)
@@ -96,12 +97,12 @@ class CreateAccountFragment : Fragment() {
 
     private fun initObserver() = with(viewModel) {
         viewLifecycleOwner.lifecycleScope.launch {
-            uiStateLogin.flowWithLifecycle(viewLifecycleOwner.lifecycle)
+            uiStateRegister.flowWithLifecycle(viewLifecycleOwner.lifecycle)
                 .collect { viewState ->
                     when (viewState) {
                         is ViewState.Success -> {
                             val response = viewState.result as BaseResponse.Success
-                            Log.d("CreateAccountFragment", response.data)
+                            Toast.makeText(context, response.data.message, Toast.LENGTH_SHORT).show()
                         }
 
                         is ViewState.Error -> {

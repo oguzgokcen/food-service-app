@@ -16,7 +16,7 @@ import com.getir.patika.foodcouriers.common.domain.ViewState
 import com.getir.patika.foodcouriers.databinding.FragmentSearchBinding
 import com.getir.patika.foodcouriers.databinding.ItemSearchMealBinding
 import com.getir.patika.foodcouriers.domain.model.BaseResponse
-import com.getir.patika.foodcouriers.domain.model.Food
+import com.getir.patika.foodcouriers.domain.model.Food.Food
 import com.getir.patika.foodcouriers.presentation.adapter.SingleRecylerAdapter
 import com.wada811.viewbindingktx.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,14 +39,14 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         },
         { binding, item ->
             with(binding) {
-                searchMealName.text = item.name
+                searchMealName.text = item.productName
                 context?.let {
                     Glide.with(it)
-                        .load(item.imageUrl)
+                        .load(item.productImage)
                         .into(binding.imgSearchMeal)
                 }
-                searchMealDescription.text = item.description
-                mealPrice.text = "$" + item.price
+                searchMealDescription.text = item.productShortDescription
+                mealPrice.text = "$" + item.productPrice
             }
         }
     )
