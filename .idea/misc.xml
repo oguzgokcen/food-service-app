@@ -11,6 +11,7 @@
         <option value="$PROJECT_DIR$/payment/pom.xml" />
         <option value="$PROJECT_DIR$/restaurant/pom.xml" />
         <option value="$PROJECT_DIR$/review/pom.xml" />
+        <option value="$PROJECT_DIR$/user/pom.xml" />
       </list>
     </option>
   </component>

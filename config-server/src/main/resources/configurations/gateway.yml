@@ -13,19 +13,23 @@ spring:
           enabled: true
       mvc:
         routes:
-          - id: order
-            uri: http://localhost:8071
+          - id: orders
+            uri: lb://orders
             predicates:
-              - Path=/api/v1/order/**
-          - id: payment
-            uri: http://localhost:8072
+              - Path=/api/v1/orders/**
+          - id: payments
+            uri: lb://payments
             predicates:
               - Path=/api/v1/payments/**
-          - id: restaurant
-            uri: http://localhost:8070
+          - id: restaurants
+            uri: lb://restaurants
             predicates:
               - Path=/api/v1/restaurants/**
-          - id: orders
-            uri: http://localhost:8073
+          - id: reviews
+            uri: lb://reviews
             predicates:
               - Path=/api/v1/reviews/**
+          - id: users
+            uri: lb://users
+            predicates:
+              - Path=/api/v1/users/**

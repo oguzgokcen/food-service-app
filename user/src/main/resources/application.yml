@@ -1,0 +1,25 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    hostname: localhost
+server:
+  servlet:
+    context-path: /api/v1/users
+  port: 8076
+spring:
+  cloud:
+    config:
+      enabled: false
+  application:
+    name: users
+  datasource:
+    url: jdbc:mysql://avnadmin:AVNS_kvccPe4Y_9jEmhG8T5c@food-microservice-food-microservice.k.aivencloud.com:23452/user?ssl-mode=REQUIRED
+    username: avnadmin
+    password: AVNS_kvccPe4Y_9jEmhG8T5c
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: mysql
+    show-sql: true
