@@ -1,4 +1,4 @@
-package com.user.error;
+package com.apigateway.error;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -57,4 +57,5 @@ public class ApiError {
     public void setStatus(String status) {
         this.status = status;
     }
+
 }

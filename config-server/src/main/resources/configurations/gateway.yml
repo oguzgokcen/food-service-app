@@ -3,35 +3,54 @@ eureka:
     register-with-eureka: false
   instance:
     hostname: localhost
+feign:
+  hystrix:
+    enabled: true
 server:
   port: 8222
 spring:
   application:
     name: gateway
+  main:
+    web-application-type: reactive
   cloud:
     gateway:
       discovery:
         locator:
           enabled: true
-      mvc:
-        routes:
-          - id: orders
-            uri: lb://orders
-            predicates:
-              - Path=/api/v1/orders/**
-          - id: payments
-            uri: lb://payments
-            predicates:
-              - Path=/api/v1/payments/**
-          - id: restaurants
-            uri: lb://restaurants
-            predicates:
-              - Path=/api/v1/restaurants/**
-          - id: reviews
-            uri: lb://reviews
-            predicates:
-              - Path=/api/v1/reviews/**
-          - id: users
-            uri: lb://users
-            predicates:
-              - Path=/api/v1/users/**
+
+      routes:
+        - id: orders
+          uri: lb://orders
+          predicates:
+            - Path=/api/v1/orders/**
+          filters:
+            - AuthenticationFilter
+
+        - id: payments
+          uri: lb://payments
+          predicates:
+            - Path=/api/v1/payments/**
+          filters:
+            - AuthenticationFilter
+
+        - id: restaurants
+          uri: lb://restaurants
+          predicates:
+            - Path=/api/v1/restaurants/**
+          filters:
+            - AuthenticationFilter
+
+        - id: reviews
+          uri: lb://reviews
+          predicates:
+            - Path=/api/v1/reviews/**
+          filters:
+            - AuthenticationFilter
+
+        - id: users
+          uri: lb://users
+          predicates:
+            - Path=/api/v1/users/**
+          filters:
+            - AuthenticationFilter

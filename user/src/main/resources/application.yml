@@ -4,6 +4,9 @@ eureka:
       defaultZone: http://localhost:8761/eureka
   instance:
     hostname: localhost
+feign:
+  hystrix:
+    enabled: true
 server:
   servlet:
     context-path: /api/v1/users
