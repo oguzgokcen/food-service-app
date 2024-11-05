@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: reviews
+  config:
+    import: optional:configserver:http://localhost:8888

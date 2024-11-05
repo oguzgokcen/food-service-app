@@ -1,0 +1,16 @@
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false # kendisine register olmamasi gerekiyor
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+server:
+  port: 8761 #eureka 8761 de �alisacak
+
+spring:
+  application:
+    name: discovery
+  # configserver da bir config varsa onu import edecek - optional olmasinin sebebi configserver da config olmadigi durumda proje fail olmadan gene baslayabilsin diye

@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: discovery
+  config:
+    import: optional:configserver:http://localhost:8888
+  # configserver da bir config varsa onu import edecek - optional olmasinin sebebi configserver da config olmadigi durumda proje fail olmadan gene baslayabilsin diye

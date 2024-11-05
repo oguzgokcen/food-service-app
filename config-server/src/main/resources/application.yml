@@ -1,0 +1,13 @@
+server:
+  port: 8888
+spring:
+  profiles:
+    active: native
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/configurations #art?k configurationlari bu path ten cekecek
+          #yml dosyas?n?n ismi ile mikroservis alt?ndaki yml daki proje isminin ayn? olmas? laz?m
