@@ -9,8 +9,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class RestaurantDto {
-    private Long id;
+public class TagDto {
     private String name;
-    private String address;
 }

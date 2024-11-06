@@ -9,8 +9,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class RestaurantDto {
+public class CategoryDto {
     private Long id;
     private String name;
-    private String address;
+    private String image;
 }

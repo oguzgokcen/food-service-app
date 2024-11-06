@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 public class RestaurantDtoPopulator extends AbstractPopulator<Restaurant, RestaurantDto> {
     @Override
     public RestaurantDto populate(Restaurant restaurant, RestaurantDto restaurantDto) {
+        restaurantDto.setId(restaurant.getId());
         restaurantDto.setName(restaurant.getName());
         restaurantDto.setAddress(restaurant.getAddress());
         return restaurantDto;

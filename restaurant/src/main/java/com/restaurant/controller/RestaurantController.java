@@ -1,6 +1,10 @@
 package com.restaurant.controller;
 
+import com.restaurant.dto.CategoryDto;
 import com.restaurant.dto.RestaurantDto;
+import com.restaurant.dto.request.CategoryRequest;
+import com.restaurant.exception.CategoryNotFoundException;
+import com.restaurant.exception.RestaurantNotFoundException;
 import com.restaurant.model.ResponseMessage;
 import com.restaurant.service.RestaurantService;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,6 +28,16 @@ public class RestaurantController {
     @PostMapping
     public ResponseEntity<ResponseMessage> saveRestaurant(@RequestBody RestaurantDto restaurantDto) {
         return restaurantService.saveRestaurant(restaurantDto);
+    }
+
+    @PutMapping("/category")
+    public ResponseEntity<ResponseMessage> addNewCategoryToRestaurant(@RequestBody CategoryRequest categoryRequest) throws CategoryNotFoundException, RestaurantNotFoundException {
+        return restaurantService.addNewCategoryToRestaurant(categoryRequest);
+    }
+
+    @GetMapping("/categories/{restaurantId}")
+    public Set<CategoryDto> getCategoriesOfRestaurantByCategoryId(@PathVariable Long restaurantId) throws RestaurantNotFoundException {
+        return restaurantService.getCategoriesOfRestaurantByCategoryId(restaurantId);
     }
 
 

@@ -1,4 +1,4 @@
-package com.restaurant.dto;
+package com.restaurant.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class RestaurantDto {
-    private Long id;
-    private String name;
-    private String address;
+public class CategoryRequest {
+    private Long restaurantId;
+    private String categoryName;
 }
