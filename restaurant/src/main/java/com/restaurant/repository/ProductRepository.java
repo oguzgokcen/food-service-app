@@ -12,4 +12,5 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
 
     @Query("select p from Product as p where p.restaurant.id = ?1 and p.category.id = ?2")
     List<Product> findProductsByRestaurantIdAndCategoryId(Long restaurantId, Long categoryId);
+
 }

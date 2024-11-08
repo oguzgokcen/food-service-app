@@ -10,7 +10,6 @@ public class CategoryDtoPopulator extends AbstractPopulator<Category, CategoryDt
     public CategoryDto populate(Category category, CategoryDto categoryDto) {
         categoryDto.setId(category.getId());
         categoryDto.setName(category.getName());
-        categoryDto.setImage(category.getImage()==null?"":category.getImage());
         return categoryDto;
     }
 

@@ -56,4 +56,8 @@ public class ProductService {
     public List<ProductDto> getAllProductsOfCategory(Long restaurantId, Long categoryId) {
         return productDtoPopulator.populateAll(productRepository.findProductsByRestaurantIdAndCategoryId(restaurantId, categoryId));
     }
+
+    public List<ProductDto> getProductsFromIdList(List<Long> productIdList) {
+        return productDtoPopulator.populateAll(productRepository.findAllById(productIdList));
+    }
 }

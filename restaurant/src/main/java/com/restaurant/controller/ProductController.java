@@ -5,6 +5,7 @@ import com.restaurant.dto.request.ProductRequest;
 import com.restaurant.exception.RestaurantNotFoundException;
 import com.restaurant.model.ResponseMessage;
 import com.restaurant.service.ProductService;
+import jakarta.ws.rs.Path;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,5 +31,10 @@ public class ProductController {
     @GetMapping("/{restaurantId}/{categoryId}")
     public List<ProductDto> getAllProductsOfCategory(@PathVariable Long restaurantId, @PathVariable Long categoryId){
         return productService.getAllProductsOfCategory(restaurantId,categoryId);
+    }
+
+    @PostMapping("/list")
+    public List<ProductDto> getProductsFromIdList(@RequestBody List<Long> productIdList){
+        return productService.getProductsFromIdList(productIdList);
     }
 }

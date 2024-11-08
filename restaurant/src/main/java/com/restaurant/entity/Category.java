@@ -21,8 +21,6 @@ public class Category {
 
     private String name;
 
-    private String image;
-
     @JsonIgnore
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "categories")
     private Set<Restaurant> restaurants = new HashSet<>();

@@ -20,6 +20,11 @@ import java.util.Set;
 public class RestaurantController {
     private final RestaurantService restaurantService;
 
+    @GetMapping("/{restaurantId}")
+    public RestaurantDto getRestaurantById(@PathVariable Long restaurantId) throws RestaurantNotFoundException {
+        return restaurantService.getRestaurantById(restaurantId);
+    }
+
     @GetMapping
     public List<RestaurantDto> getAllRestaurants() {
         return restaurantService.getAllRestaurants();

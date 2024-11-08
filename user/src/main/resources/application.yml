@@ -8,8 +8,6 @@ feign:
   hystrix:
     enabled: true
 server:
-  servlet:
-    context-path: /api/v1/users
   port: 8076
 spring:
   cloud:

@@ -21,11 +21,12 @@ public class JwtService {
     public static final String SECRET = "5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437";
 
 
-    void validateToken(String token) {
+    String validateToken(String token) {
         if (token != null && token.startsWith("Bearer ")) {
             token = token.substring(7);
         }
             Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token);
+        return extractUsername(token);
     }
 
     private boolean isTokenExpired(String token) {
@@ -51,6 +52,13 @@ public class JwtService {
     private Key getSignKey() {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET);
         return Keys.hmacShaKeyFor(keyBytes);
+    }
+    public String extractUsername(String token) {
+        return extractClaims(token).getSubject();
+    }
+
+    private Claims extractClaims(String token) {
+        return Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token).getBody();
     }
 }
 

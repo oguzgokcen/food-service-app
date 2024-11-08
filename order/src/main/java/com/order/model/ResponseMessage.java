@@ -1,15 +1,16 @@
-package com.restaurant.dto;
+package com.order.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.http.HttpStatus;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CategoryDto {
-    private Long id;
-    private String name;
+public class ResponseMessage {
+    private String message;
+    private HttpStatus status;
 }

@@ -1,4 +1,4 @@
-package com.restaurant.dto;
+package com.order.model.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CategoryDto {
+public class CategoryResponse {
     private Long id;
     private String name;
 }

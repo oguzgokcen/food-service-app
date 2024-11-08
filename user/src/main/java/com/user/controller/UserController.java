@@ -6,6 +6,7 @@ import com.user.entity.UserCredential;
 import com.user.service.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -37,7 +38,8 @@ public class UserController {
     }
 
     @GetMapping("/validate")
-    public void validateToken(@RequestHeader("Authorization") String authHeader) {
-        service.validateToken(authHeader);
+    public String validateToken(@RequestHeader("Authorization") String authHeader) {
+        String email = service.validateToken(authHeader);
+        return email;
     }
 }

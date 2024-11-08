@@ -55,4 +55,8 @@ public class RestaurantService {
         Restaurant restaurant= restaurantRepository.findById(restaurantId).orElseThrow(()->new RestaurantNotFoundException(CustomResponseMessages.RESTAURANT_NOT_FOUND));
         return categoryDtoPopulator.populateAllSet(restaurant.getCategories());
     }
+
+    public RestaurantDto getRestaurantById(Long restaurantId) throws RestaurantNotFoundException {
+        return restaurantDtoPopulator.populate(findRestaurantById(restaurantId));
+    }
 }
