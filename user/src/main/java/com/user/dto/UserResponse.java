@@ -1,4 +1,4 @@
-package com.order.model.response;
+package com.user.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,10 +7,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class UserResponse {
-    private Long id;
+    private int id;
     private String fullName;
     private String email;
 }

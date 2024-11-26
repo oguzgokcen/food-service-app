@@ -1,6 +1,7 @@
 package com.user.service;
 
 import com.user.dto.RegisterRequest;
+import com.user.dto.UserResponse;
 import com.user.entity.UserCredential;
 import com.user.exception.NotUniqueEmailException;
 import com.user.repository.UserCredentialRepository;
@@ -35,5 +36,10 @@ public class AuthService {
 
     public String validateToken(String token) {
          return jwtService.validateToken(token);
+    }
+
+    public UserResponse getUser(String email) {
+        UserCredential user = repository.findByEmail(email).orElseThrow(()-> new RuntimeException("User not found"));
+        return new UserResponse(user.getId(),user.getFullName(),user.getEmail());
     }
 }

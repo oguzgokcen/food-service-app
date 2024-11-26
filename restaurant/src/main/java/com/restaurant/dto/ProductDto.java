@@ -20,4 +20,5 @@ public class ProductDto {
     private String productImage;
     private Set<TagDto> tags;
     private CategoryDto category;
+    private Long orderCount;
 }

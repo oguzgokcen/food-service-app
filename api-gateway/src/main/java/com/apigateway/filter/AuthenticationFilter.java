@@ -9,6 +9,7 @@ import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -30,6 +31,7 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
     @Override
     public GatewayFilter apply(Config config) {
         return ((exchange, chain) -> {
+            ServerHttpRequest userEmail = null;
             if (validator.isSecured.test(exchange.getRequest())) {
                 //header contains token or not
                 if (!exchange.getRequest().getHeaders().containsKey(HttpHeaders.AUTHORIZATION)) {
@@ -41,9 +43,9 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
                     authHeader = authHeader.substring(7);
                 }
                 try {
-                    userServiceClient.validateToken(authHeader);
-
-                    //exchange.getRequest().mutate().header("loggedInUser", username);
+                    String email = userServiceClient.validateToken(authHeader);
+                    System.out.println(email);
+                    userEmail = exchange.getRequest().mutate().header("userEmail", email).build();
 
                 }catch(FeignException fe){
                     throw new AuthException(fe.contentUTF8());
@@ -54,7 +56,7 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
                     throw ex;
                 }
             }
-            return chain.filter(exchange);
+            return chain.filter(exchange.mutate().request(userEmail).build());
         });
     }
 

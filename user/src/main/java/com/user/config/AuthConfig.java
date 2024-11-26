@@ -40,6 +40,7 @@ public class AuthConfig {
             "/auth/validate",
             "/auth/login",
             "/auth/hello",
+            "/auth/email/**",
             "/h2/**",
             "/swagger-ui.html",
             // other public endpoints of your API may be appended to this array

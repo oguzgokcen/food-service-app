@@ -5,14 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderRequest {
-    private Long restaurantId;
-    private List<ProductRequest> productList;
-    private Long totalPrice;
+public class ProductRequest {
+    private Long productId;
+    private Long count;
 }

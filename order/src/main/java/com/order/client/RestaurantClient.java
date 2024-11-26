@@ -9,4 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface RestaurantClient {
     @GetMapping("/{restaurantId}")
     RestaurantResponse getById(@PathVariable Long restaurantId);
+
+    @GetMapping("/exists/{restaurantId}")
+    boolean existById(@PathVariable Long restaurantId);
 }

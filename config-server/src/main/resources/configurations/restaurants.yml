@@ -17,7 +17,7 @@ spring:
     hibernate:
       ddl-auto: update
     database: mysql
-#
-#application:
-#  config:
-#    students-url:
+
+application:
+  config:
+    orders-url: http://localhost:8071/api/v1/orders

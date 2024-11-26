@@ -45,5 +45,9 @@ public class RestaurantController {
         return restaurantService.getCategoriesOfRestaurantByCategoryId(restaurantId);
     }
 
+    @GetMapping("/exists/{restaurantId}")
+    public boolean existsByRestaurantId(@PathVariable Long restaurantId){
+        return restaurantService.existsByRestaurantId(restaurantId);
+    }
 
 }

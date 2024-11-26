@@ -55,6 +55,13 @@ spring:
           filters:
             - AuthenticationFilter
 
+        - id: products
+          uri: lb://restaurants
+          predicates:
+            - Path=/api/v1/products/**
+          filters:
+            - AuthenticationFilter
+
 application:
   config:
     auth-users-url: http://localhost:8076/auth

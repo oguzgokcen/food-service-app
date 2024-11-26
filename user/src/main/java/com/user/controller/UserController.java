@@ -2,14 +2,12 @@ package com.user.controller;
 
 import com.user.dto.LoginRequest;
 import com.user.dto.RegisterRequest;
-import com.user.entity.UserCredential;
+import com.user.dto.UserResponse;
 import com.user.service.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -39,7 +37,11 @@ public class UserController {
 
     @GetMapping("/validate")
     public String validateToken(@RequestHeader("Authorization") String authHeader) {
-        String email = service.validateToken(authHeader);
-        return email;
+        return service.validateToken(authHeader);
+    }
+
+    @GetMapping("/email/{email}")
+    public UserResponse getUser(@PathVariable String email){
+        return service.getUser(email);
     }
 }

@@ -59,4 +59,8 @@ public class RestaurantService {
     public RestaurantDto getRestaurantById(Long restaurantId) throws RestaurantNotFoundException {
         return restaurantDtoPopulator.populate(findRestaurantById(restaurantId));
     }
+
+    public boolean existsByRestaurantId(Long restaurantId) {
+        return restaurantRepository.findById(restaurantId).isEmpty();
+    }
 }
