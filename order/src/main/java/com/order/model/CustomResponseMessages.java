@@ -5,4 +5,6 @@ public class CustomResponseMessages {
     public static final String ORDER_NOT_CREATED = "Order not created";
     public static final String ORDER_NOT_FOUND = "Order not found";
     public static final String RESTAURANT_DOES_NOT_EXISTS = "Restaurant does not exist";
+    public static final String STOCK_IS_NOT_ENOUGH = "Stock is not enough";
+
 }

@@ -15,4 +15,5 @@ public class OrderResponse {
     private List<ProductResponse> productResponseList;
     private Long totalPrice;
     private UserResponse userResponse;
+    private boolean isPaid;
 }

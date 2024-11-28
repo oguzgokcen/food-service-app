@@ -17,7 +17,6 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private Long restaurantId;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "order")
@@ -26,5 +25,6 @@ public class Order {
 
     private Long totalPrice;
     private Long userId;
+    private boolean isPaid;
 
 }

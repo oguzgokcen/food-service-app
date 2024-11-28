@@ -1,5 +1,6 @@
 package com.order.client;
 
+import com.order.model.request.ProductRequest;
 import com.order.model.response.ProductResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,4 +12,8 @@ import java.util.List;
 public interface ProductClient {
     @PostMapping("/list")
     List<ProductResponse> getAllById(@RequestBody List<Long> productIdList);
+
+    @PostMapping("/remove")
+    void removeFromStock(@RequestBody List<ProductRequest> productList);
+
 }

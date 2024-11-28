@@ -20,4 +20,3 @@ public class FeignConfig {
         return new SpringDecoder(messageConverters);
     }
 }
-

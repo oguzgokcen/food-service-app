@@ -9,5 +9,5 @@ spring:
     config:
       server:
         native:
-          search-locations: classpath:/configurations #art?k configurationlari bu path ten cekecek
-          #yml dosyas?n?n ismi ile mikroservis alt?ndaki yml daki proje isminin ayn? olmas? laz?m
+          search-locations: classpath:/configurations #artik configurationlari bu path ten cekecek
+          #yml dosyasinin ismi ile mikroservis altindaki yml daki proje isminin ayni olmasi lazim

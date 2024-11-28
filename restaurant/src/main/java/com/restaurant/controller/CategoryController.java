@@ -16,8 +16,7 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @PostMapping
-    public ResponseEntity<ResponseMessage> createCategory(@RequestParam String categoryName){
+    public ResponseEntity<ResponseMessage> createCategory(@RequestParam String categoryName) {
         return categoryService.createCategory(categoryName);
     }
-
 }

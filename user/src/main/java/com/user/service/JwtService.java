@@ -25,7 +25,7 @@ public class JwtService {
         if (token != null && token.startsWith("Bearer ")) {
             token = token.substring(7);
         }
-            Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token);
+        Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token);
         return extractUsername(token);
     }
 
@@ -45,7 +45,7 @@ public class JwtService {
                 .setClaims(claims)
                 .setSubject(userName)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 30))
+                .setExpiration(new Date(System.currentTimeMillis() + 100000 * 60 * 30))
                 .signWith(SignatureAlgorithm.HS256, getSignKey()).compact();
     }
 
@@ -53,6 +53,7 @@ public class JwtService {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET);
         return Keys.hmacShaKeyFor(keyBytes);
     }
+
     public String extractUsername(String token) {
         return extractClaims(token).getSubject();
     }

@@ -12,6 +12,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductRequest {
+    private Long productId;
     private Long restaurantId;
     private Long categoryId;
     private String productName;

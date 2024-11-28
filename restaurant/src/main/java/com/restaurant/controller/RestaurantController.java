@@ -46,7 +46,7 @@ public class RestaurantController {
     }
 
     @GetMapping("/exists/{restaurantId}")
-    public boolean existsByRestaurantId(@PathVariable Long restaurantId){
+    public boolean existsByRestaurantId(@PathVariable Long restaurantId) {
         return restaurantService.existsByRestaurantId(restaurantId);
     }
 

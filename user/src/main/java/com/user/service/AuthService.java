@@ -1,33 +1,31 @@
 package com.user.service;
 
-import com.user.dto.RegisterRequest;
-import com.user.dto.UserResponse;
+import com.user.dto.*;
 import com.user.entity.UserCredential;
-import com.user.exception.NotUniqueEmailException;
+import com.user.exception.*;
 import com.user.repository.UserCredentialRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class AuthService {
-    @Autowired
-    private UserCredentialRepository repository;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final UserCredentialRepository userCredentialRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final JwtService jwtService;
+    private final UserCardService userCardService;
 
-    @Autowired
-    private JwtService jwtService;
-
-    public String saveUser(RegisterRequest registerRequest) {
+    public MessageResponse saveUser(RegisterRequest registerRequest) {
         registerRequest.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
         try {
-            repository.save(new UserCredential(registerRequest.getFullName(),registerRequest.getEmail(),registerRequest.getPassword()));
-        }catch (DataIntegrityViolationException ex){
+            userCredentialRepository.save(new UserCredential(registerRequest.getFullName(), registerRequest.getEmail(), registerRequest.getPassword()));
+        } catch (DataIntegrityViolationException ex) {
             throw new NotUniqueEmailException();
         }
-        return "user added to the system";
+        return new MessageResponse("user added to the system");
     }
 
     public String generateToken(String username) {
@@ -35,11 +33,22 @@ public class AuthService {
     }
 
     public String validateToken(String token) {
-         return jwtService.validateToken(token);
+        return jwtService.validateToken(token);
     }
 
     public UserResponse getUser(String email) {
-        UserCredential user = repository.findByEmail(email).orElseThrow(()-> new RuntimeException("User not found"));
-        return new UserResponse(user.getId(),user.getFullName(),user.getEmail());
+        UserCredential user = userCredentialRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
+        return new UserResponse(user.getId(), user.getFullName(), user.getEmail());
+    }
+
+    public ResponseEntity<String> addCardToUser(CardRequest cardRequest, String authHeader) throws UserNotFoundException {
+        UserCredential user = userCredentialRepository.findByEmail(validateToken(authHeader)).orElseThrow(() -> new UserNotFoundException("User not found"));
+        return userCardService.addCardToUser(cardRequest, user);
+    }
+
+    public Long deductMoneyFromCardAndGetUserId(DeductRequest deductRequest, String userEmail) throws MissMatchException, InsufficientBalanceException, UserNotFoundException, CardNotFoundException {
+        UserCredential user = userCredentialRepository.findByEmail(userEmail).orElseThrow(() -> new UserNotFoundException("User not found"));
+        userCardService.deductMoneyFromCard(deductRequest, userEmail);
+        return (long) user.getId();
     }
 }

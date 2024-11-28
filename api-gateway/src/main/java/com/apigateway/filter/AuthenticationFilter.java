@@ -20,8 +20,6 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
 
     private final RouteValidator validator;
 
-
-
     public AuthenticationFilter(@Lazy UserServiceClient userServiceClient, RouteValidator routeValidator) {
         super(Config.class);
         this.userServiceClient = userServiceClient;
@@ -47,12 +45,11 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
                     System.out.println(email);
                     userEmail = exchange.getRequest().mutate().header("userEmail", email).build();
 
-                }catch(FeignException fe){
+                } catch (FeignException fe) {
                     throw new AuthException(fe.contentUTF8());
-                }
-                catch (Exception ex) {
+                } catch (Exception ex) {
                     // Hata mesajlarını loglayabilir veya yeniden fırlatabilirsiniz
-                   System.out.println(ex);
+                    System.out.println(ex);
                     throw ex;
                 }
             }

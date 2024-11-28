@@ -21,4 +21,6 @@ public class ProductDto {
     private Set<TagDto> tags;
     private CategoryDto category;
     private Long orderCount;
+    private double productRating;
+    private Long stock;
 }

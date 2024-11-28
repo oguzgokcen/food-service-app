@@ -11,10 +11,9 @@ import java.util.concurrent.atomic.AtomicLong;
 public class ProductService {
     private final ProductRepository productRepository;
 
-
     public Long getOrderCountByProductId(Long productId) {
         AtomicLong temp = new AtomicLong();
-        productRepository.findAllByProductId(productId).forEach(e-> temp.addAndGet(e.getCount()));
+        productRepository.findAllByProductId(productId).forEach(e -> temp.addAndGet(e.getCount()));
         return temp.get();
     }
 }

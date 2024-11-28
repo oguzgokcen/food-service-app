@@ -22,26 +22,26 @@ import static com.user.error.GlobalErrorCode.JWT_ERROR;
 @RestControllerAdvice
 public class ErrorHandler {
     @ExceptionHandler({NotUniqueEmailException.class, MethodArgumentNotValidException.class, AuthenticationException.class})
-    ResponseEntity<ApiError> handleException(Exception exception, HttpServletRequest request){
+    ResponseEntity<ApiError> handleException(Exception exception, HttpServletRequest request) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
         ApiError apiError = new ApiError();
         apiError.setPath(request.getRequestURI());
         apiError.setMessage(exception.getMessage());
-        if(exception instanceof MethodArgumentNotValidException){
-            var validationErrors = ((MethodArgumentNotValidException)exception).getBindingResult().getFieldErrors().stream().collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage, (existing, replacing) -> existing));
+        if (exception instanceof MethodArgumentNotValidException) {
+            var validationErrors = ((MethodArgumentNotValidException) exception).getBindingResult().getFieldErrors().stream().collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage, (existing, replacing) -> existing));
             Map.Entry<String, String> firstEntry = validationErrors.entrySet().iterator().next();
             apiError.setMessage(firstEntry.getValue());
             apiError.setValidationErrors(validationErrors);
-        }
-        else if(exception instanceof AuthenticationException){
+        } else if (exception instanceof AuthenticationException) {
             apiError.setMessage("Şifre veya kullanıcı adı hatalı");
             status = HttpStatus.UNAUTHORIZED;
         }
-        apiError.setStatus(status.value()+"");
+        apiError.setStatus(status.value() + "");
         return ResponseEntity.status(status).body(apiError);
     }
-    @ExceptionHandler({SignatureException.class, MalformedJwtException.class, ExpiredJwtException.class,UnsupportedJwtException.class})
-    ResponseEntity<ApiError> handleJwtExceptions(Exception exception, HttpServletRequest request){
+
+    @ExceptionHandler({SignatureException.class, MalformedJwtException.class, ExpiredJwtException.class, UnsupportedJwtException.class})
+    ResponseEntity<ApiError> handleJwtExceptions(Exception exception, HttpServletRequest request) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
         ApiError apiError = new ApiError();
         apiError.setPath(request.getRequestURI());

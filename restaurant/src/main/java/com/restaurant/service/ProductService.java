@@ -2,6 +2,7 @@ package com.restaurant.service;
 
 import com.restaurant.dto.ProductDto;
 import com.restaurant.dto.request.ProductRequest;
+import com.restaurant.dto.request.RemoveRequest;
 import com.restaurant.entity.Category;
 import com.restaurant.entity.Product;
 import com.restaurant.entity.Restaurant;
@@ -59,5 +60,13 @@ public class ProductService {
 
     public List<ProductDto> getProductsFromIdList(List<Long> productIdList) {
         return productDtoPopulator.populateAll(productRepository.findAllById(productIdList));
+    }
+
+    public void removeFromStock(List<RemoveRequest> productList) {
+        productList.forEach(e->{
+            Product product = productRepository.findById(e.getProductId()).orElseThrow(()->new RuntimeException("Product not found"));
+            product.setStock(product.getStock()-e.getCount());
+            productRepository.save(product);
+        });
     }
 }

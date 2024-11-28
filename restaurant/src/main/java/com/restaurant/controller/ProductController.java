@@ -2,10 +2,10 @@ package com.restaurant.controller;
 
 import com.restaurant.dto.ProductDto;
 import com.restaurant.dto.request.ProductRequest;
+import com.restaurant.dto.request.RemoveRequest;
 import com.restaurant.exception.RestaurantNotFoundException;
 import com.restaurant.model.ResponseMessage;
 import com.restaurant.service.ProductService;
-import jakarta.ws.rs.Path;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,4 +37,11 @@ public class ProductController {
     public List<ProductDto> getProductsFromIdList(@RequestBody List<Long> productIdList){
         return productService.getProductsFromIdList(productIdList);
     }
+
+    @PostMapping("/remove")
+    public void removeFromStock(@RequestBody List<RemoveRequest> productList){
+        productService.removeFromStock(productList);
+    }
+
+
 }

@@ -17,17 +17,11 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String productName;
-
     private String productShortDescription;
-
     private String productDescription;
-
     private Long productPrice;
-
     private String productImage;
-
     private Long stock;
 
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})

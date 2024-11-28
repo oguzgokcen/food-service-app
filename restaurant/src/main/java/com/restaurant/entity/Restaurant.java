@@ -17,14 +17,8 @@ public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
-
     private String address;
-
-
-    //todo image eklenecek
-
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(

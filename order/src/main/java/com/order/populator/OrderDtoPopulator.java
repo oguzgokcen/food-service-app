@@ -8,7 +8,9 @@ import org.springframework.stereotype.Component;
 public class OrderDtoPopulator extends AbstractPopulator<Order, OrderDto> {
     @Override
     public OrderDto populate(Order order, OrderDto orderDto) {
-        return null;
+        orderDto.setId(order.getId());
+        orderDto.setRestaurantId(order.getRestaurantId());
+        return orderDto;
     }
 
     @Override

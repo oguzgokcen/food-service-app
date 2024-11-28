@@ -23,7 +23,7 @@ public class RegisterRequest {
     private String email;
 
     @NotNull(message = "Şifre boş olamaz")
-    @Size(min = 5, max=255, message = "Şifreniz en az 5, en fazla 255 karakter içermeli")
+    @Size(min = 5, max = 255, message = "Şifreniz en az 5, en fazla 255 karakter içermeli")
     @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).*$", message = "Şifreniz bir büyük bir küçük harf ve rakam içermeli")
     private String password;
 }

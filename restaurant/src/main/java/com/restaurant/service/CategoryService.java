@@ -26,6 +26,4 @@ public class CategoryService {
             return ResponseEntity.internalServerError().body(new ResponseMessage(CustomResponseMessages.CATEGORY_ALREADY_EXISTS, HttpStatus.INTERNAL_SERVER_ERROR));
         return ResponseEntity.ok(new ResponseMessage(CustomResponseMessages.CATEGORY_CREATED, HttpStatus.OK));
     }
-
-
 }

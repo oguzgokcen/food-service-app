@@ -62,6 +62,20 @@ spring:
           filters:
             - AuthenticationFilter
 
+        - id: categories
+          uri: lb://restaurants
+          predicates:
+            - Path=/api/v1/categories/**
+          filters:
+            - AuthenticationFilter
+
+        - id: tags
+          uri: lb://restaurants
+          predicates:
+            - Path=/api/v1/tags/**
+          filters:
+            - AuthenticationFilter
+
 application:
   config:
     auth-users-url: http://localhost:8076/auth
